@@ -23,7 +23,7 @@ def post_detail(request, post_id):
     post = Post.objects.get(id=post_id)
     ctx = {'post': post}
 
-    return render(request, 'post/detail.html', context=ctx)
+    return render(request, 'posts/detail.html', context=ctx)
 
 
 def create_post(request):
