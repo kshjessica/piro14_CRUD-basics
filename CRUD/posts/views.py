@@ -64,3 +64,17 @@ def update_post(request, pk):
         form = PostForm(instance=post)
         ctx = {'form': form}
         return render(request, 'posts/post_form.html', ctx)
+
+
+def delete_post(request, pk):
+    '''
+    Delete(D)
+    포스트를 삭제하는 뷰
+    '''
+    post = get_object_or_404(Post, pk=pk)
+
+    if request.method == "GET":
+        return redirect('posts:detail', post.id)
+    elif request.method == "POST":
+        post.delete()
+        return redirect('posts:list')
